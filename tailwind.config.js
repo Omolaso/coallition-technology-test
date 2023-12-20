@@ -2,6 +2,13 @@
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
+		screens: {
+			sm: "480px",
+			md: "768px",
+			lg: "1024px",
+			xl: "1280px",
+			"2xl": "1536px",
+		},
 		colors: {
 			black: "#000",
 			white: "#fff",
@@ -12,7 +19,7 @@ export default {
 			cyan: "#0c4a6e",
 		},
 		fontFamily: {
-			roboto: ["Roboto", "sans-serif"],
+			roboto: ["roboto", "sans-serif"],
 		},
 		extend: {},
 	},

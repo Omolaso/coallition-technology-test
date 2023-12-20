@@ -1,16 +1,35 @@
-import { useState } from "react";
-import heroSectionbg from "/hero-section-image.jpg";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import sliderImage1 from "/slider-image1.jpg";
 import sliderImage2 from "/slider-image2.jpg";
-import logo from "/logo2.png";
-import { GoDotFill } from "react-icons/go";
+import logo2 from "/logo2.png";
+import logo from "/logo.jpg";
 import { navLinks, INavProps } from "../components/NavLinks";
 
 const containerStyle = {
-	backgroundImage: `url(${heroSectionbg})`,
+	backgroundImage: `url(${logo})`,
 	backgroundSize: "cover",
 	backgroundPosition: "center",
 	minHeight: "100vh",
+};
+
+const responsive = {
+	superLargeDesktop: {
+		breakpoint: { max: 4000, min: 3000 },
+		items: 5,
+	},
+	desktop: {
+		breakpoint: { max: 3000, min: 1024 },
+		items: 3,
+	},
+	tablet: {
+		breakpoint: { max: 1024, min: 768 },
+		items: 2,
+	},
+	mobile: {
+		breakpoint: { max: 768, min: 0 },
+		items: 1,
+	},
 };
 
 const slidesArray: string[] = [
@@ -29,18 +48,6 @@ const slidesArray: string[] = [
 ];
 
 const History = () => {
-	const [currentSlide, setCurrentSlide] = useState({
-		currentIndex: 0,
-		lastIndex: 4,
-	});
-
-	const goToNextSlide = () => {
-		setCurrentSlide((prevState) => ({
-			currentIndex: prevState.currentIndex + 4,
-			lastIndex: prevState.lastIndex + 4,
-		}));
-	};
-
 	return (
 		<section id="history" className="w-full">
 			<nav className="hidden lg:flex min-h-[5rem] bg-white text-slate w-full py-2 px-4 md:px-8">
@@ -48,7 +55,7 @@ const History = () => {
 					<div className="flex items-center justify-center w-full">
 						<a href={navLinks[0].path} className="w-full">
 							<img
-								src={logo}
+								src={logo2}
 								alt="Logo"
 								className="w-full min-h-[4rem] max-w-[15rem] rounded-full"
 							/>
@@ -81,15 +88,19 @@ const History = () => {
 				<div className="max-w-[100rem] w-full mx-auto">
 					<div className="flex flex-col gap-4 w-full py-2 px-4 md:px-8">
 						<div className="flex flex-row items-end gap-[0.15rem] md:gap-1">
-							<span className="font-bold text-[7rem] mb-[-2.3rem]">01</span>
+							<span className="font-bold text-[7rem] mb-[-2.3rem] text-slate">
+								01
+							</span>
 							<div className="flex flex-col">
-								<span className="text-[2rem] font-semibold">HISTORY</span>
-								<div className="w-[15px] h-[15px] bg-black" />
+								<span className="text-[2rem] font-semibold text-cyan">
+									HISTORY
+								</span>
+								<div className="w-[15px] h-[15px] bg-cyan" />
 							</div>
 						</div>
 
 						<div className="ml-0 md:ml-[5rem]">
-							<span>
+							<span className="font-medium text-cyan">
 								Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 								Ducimus non repellat rem vitae adipisci, fugit ullam, provident
 								eius voluptas quia maiores laboriosam ut dicta magni. Vel optio
@@ -99,37 +110,32 @@ const History = () => {
 					</div>
 				</div>
 
-				<div className="flex items-stretch justify-center bg-black bg-opacity-75 py-2 px-4 md:px-8 min-h-[10rem] w-full max-w-[100rem] mx-auto">
-					<div className="flex flex-col items-center gap-2 w-full text-white">
-						<div className="flex-1 flex flex-row items-center gap-4 w-full">
-							{slidesArray
-								.slice(currentSlide.currentIndex, currentSlide.lastIndex)
-								.map((slide: string, index: number) => (
-									<div
-										key={index}
-										style={{
-											backgroundImage: `url(${slide})`,
-											backgroundSize: "cover",
-											backgroundPosition: "center",
-											height: "100%",
-											width: "100%",
-										}}
-									/>
-								))}
-						</div>
-						<div className="flex flex-row items-center gap-2">
-							{slidesArray.slice(0, 3).map((slide: string, index: number) => (
-								<button
-									type="button"
-									key={index}
-									onClick={() => goToNextSlide()}
-								>
-									<span className="hidden">{slide}</span>
-									<GoDotFill />
-								</button>
-							))}
-						</div>
-					</div>
+				<div className="flex items-stretch justify-center bg-black bg-opacity-75 pt-2 pb-[2rem] px-4 md:px-8 min-h-[10rem] w-full max-w-[100rem] mx-auto">
+					<Carousel
+						responsive={responsive}
+						removeArrowOnDeviceType={["mobile"]}
+						additionalTransfrom={0}
+						arrows={false}
+						showDots
+						autoPlay
+						autoPlaySpeed={3000}
+						containerClass="container-with-dots"
+						dotListClass=""
+						draggable
+						infinite
+						minimumTouchDrag={80}
+						pauseOnHover
+						renderButtonGroupOutside
+						renderDotsOutside
+					>
+						{slidesArray.map((slide: string, index: number) => (
+							<div
+								key={index}
+								style={{ backgroundImage: `url(${slide})` }}
+								className="min-h-[10rem] max-w-[25rem] w-full bg-center bg-cover"
+							/>
+						))}
+					</Carousel>
 				</div>
 			</div>
 		</section>

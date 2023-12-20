@@ -7,8 +7,8 @@ const Navbar = () => {
 	const [modal, setModal] = useState<boolean>(false);
 
 	return (
-		<nav className="flex items-center justify-between w-full bg-[transparent] gap-4 min-h-[5rem]">
-			<div className="hidden md:flex flex-row items-center justify-between w-full max-w-[100rem]">
+		<nav className="flex items-center justify-between w-full bg-[transparent] gap-4 min-h-[5rem] max-h-[6rem]">
+			<div className="hidden lg:flex flex-row items-center justify-between w-full max-w-[100rem] mx-auto px-4 md:px-8 py-2">
 				<div className="flex items-center justify-center w-full max-w-[2rem]">
 					<a href={navLinks[0].path} className="w-full">
 						<img
@@ -39,7 +39,7 @@ const Navbar = () => {
 
 			{/*NAVS MOBILE VIEW */}
 			<div className="block lg:hidden relative w-full">
-				<div className="flex flex-row items-center justify-between w-full">
+				<div className="flex flex-row items-center justify-between w-full px-4 md:px-8 py-2">
 					<div className="flex items-center justify-center w-full max-w-[2rem]">
 						<a href={navLinks[0].path} className="w-full">
 							<img
@@ -58,8 +58,8 @@ const Navbar = () => {
 				<div
 					className={
 						modal
-							? "fixed z-50 right-0 top-0 h-full bg-black flex flex-col justify-between flex-[0.3] w-full duration-500 ease-in-out p-4"
-							: "fixed z-50 right-[-100%] h-full top-0 bg-black flex flex-col justify-between flex-[0.3] w-full duration-500 ease-in-out p-4"
+							? "fixed z-50 right-0 top-0 h-full bg-[url(slider-image1.jpg)] bg-cover bg-no-repeat flex flex-col justify-between flex-[0.3] w-full duration-500 ease-in-out p-4"
+							: "fixed z-50 right-[-100%] h-full top-0 bg-[url(slider-image1.jpg)] bg-cover bg-no-repeat flex flex-col justify-between flex-[0.3] w-full duration-500 ease-in-out p-4"
 					}
 				>
 					<div className="flex flex-col gap-8">
@@ -68,7 +68,7 @@ const Navbar = () => {
 							onClick={() => setModal(false)}
 							className="styled-border self-end"
 						>
-							<AiOutlineClose className="text-white font-bold w-8 h-8" />
+							<AiOutlineClose className="text-white text-opacity-80 text-xl font-bold w-8 h-8" />
 						</button>
 						<ul className="flex flex-col gap-8 text-lg">
 							{navLinks
@@ -78,7 +78,7 @@ const Navbar = () => {
 										<a
 											href={navLink.path}
 											onClick={() => setModal(false)}
-											className="text-white font-medium text-lg"
+											className="text-white italic text-opacity-80 font-bold text-2xl"
 										>
 											{(index + 1).toString().padStart(2, "0")}. {navLink.name}
 										</a>
