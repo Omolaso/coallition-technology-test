@@ -1,3 +1,4 @@
+
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import sliderImage1 from "/slider-image1.jpg";
@@ -48,6 +49,7 @@ const slidesArray: string[] = [
 ];
 
 const History = () => {
+	
 	return (
 		<section id="history" className="w-full">
 			<nav className="hidden lg:flex min-h-[5rem] bg-white text-slate w-full py-2 px-4 md:px-8">
@@ -88,7 +90,7 @@ const History = () => {
 				<div className="max-w-[100rem] w-full mx-auto">
 					<div className="flex flex-col gap-4 w-full py-2 px-4 md:px-8">
 						<div className="flex flex-row items-end gap-[0.15rem] md:gap-1">
-							<span className="font-bold text-[7rem] mb-[-2.3rem] text-slate">
+							<span className="font-bold text-[7rem] mb-[-2.5rem] md:mb-[-2.3rem] text-slate">
 								01
 							</span>
 							<div className="flex flex-col">

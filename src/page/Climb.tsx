@@ -57,7 +57,7 @@ const Climb = () => {
 				<div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 min-h-[5rem] w-full py-2 px-4 md:px-8">
 					<div className="flex flex-row items-center gap-[0.15rem] md:gap-1">
 						<span className="font-bold text-[7rem] text-slate">02</span>
-						<div className="flex flex-col mb-[-1.8rem]">
+						<div className="flex flex-col mb-[-2rem] md:mb-[-1.8rem]">
 							<span className="text-[2rem] font-semibold text-cyan">CLIMB</span>
 							<div className="w-[15px] h-[15px] bg-cyan" />
 						</div>

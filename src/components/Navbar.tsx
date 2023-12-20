@@ -4,17 +4,28 @@ import { AiOutlineClose } from "react-icons/ai";
 import { navLinks, INavProps } from "./NavLinks";
 import sidebarBg from "/slider-image1.jpg";
 
-const Navbar = () => {
+interface IProps {
+	isVisible: boolean;
+}
+
+const Navbar = ({ isVisible }: IProps) => {
 	const [modal, setModal] = useState<boolean>(false);
 
 	return (
 		<nav className="flex items-center justify-between w-full bg-[transparent] gap-4 min-h-[5rem] max-h-[6rem]">
 			<div className="hidden lg:flex flex-row items-center justify-between w-full max-w-[100rem] mx-auto px-4 md:px-8 py-2">
-				<div className="flex items-center justify-center w-full max-w-[2rem]">
+				<div
+					className={
+						isVisible
+							? " opacity-100 duration-500 ease-linear flex items-center justify-center w-full max-w-[2rem]"
+							: "opacity-10 duration-500 ease-linear flex items-center justify-center w-full max-w-[2rem]"
+					}
+				>
 					<a href={navLinks[0].path} className="w-full">
 						<img
 							src={navLinks[0].name}
 							alt="Logo"
+							loading="lazy"
 							className="w-full max-h-[2rem] rounded-full"
 						/>
 					</a>
@@ -28,7 +39,11 @@ const Navbar = () => {
 								<li key={navLink.name}>
 									<a
 										href={navLink.path}
-										className="font-semibold text-base text-white italic underline hover:no-underline"
+										className={
+											isVisible
+												? "duration-500 ease-linear font-semibold text-base text-white italic underline hover:no-underline"
+												: " translate-y-[-100%] duration-500 ease-linear font-semibold text-base text-white italic underline hover:no-underline"
+										}
 									>
 										{(index + 1).toString().padStart(2, "0")}. {navLink.name}
 									</a>
