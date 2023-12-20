@@ -2,6 +2,7 @@ import { useState } from "react";
 import { RiMenu4Fill } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
 import { navLinks, INavProps } from "./NavLinks";
+import sidebarBg from "/slider-image1.jpg";
 
 const Navbar = () => {
 	const [modal, setModal] = useState<boolean>(false);
@@ -56,10 +57,11 @@ const Navbar = () => {
 				</div>
 
 				<div
+					style={{ backgroundImage: `url(${sidebarBg})` }}
 					className={
 						modal
-							? "fixed z-50 right-0 top-0 h-full bg-[url(./slider-image1.jpg)] bg-cover bg-no-repeat flex flex-col justify-between flex-[0.3] w-full duration-500 ease-in-out p-4"
-							: "fixed z-50 right-[-100%] h-full top-0 bg-[url(./slider-image1.jpg)] bg-cover bg-no-repeat flex flex-col justify-between flex-[0.3] w-full duration-500 ease-in-out p-4"
+							? "fixed z-50 right-0 top-0 h-full bg-cover bg-no-repeat flex flex-col justify-between flex-[0.3] w-full duration-500 ease-in-out p-4"
+							: "fixed z-50 right-[-100%] h-full top-0 bg-cover bg-no-repeat flex flex-col justify-between flex-[0.3] w-full duration-500 ease-in-out p-4"
 					}
 				>
 					<div className="flex flex-col gap-8">

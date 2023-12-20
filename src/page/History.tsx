@@ -110,29 +110,34 @@ const History = () => {
 					</div>
 				</div>
 
-				<div className="flex items-stretch justify-center bg-black bg-opacity-75 pt-2 pb-[2rem] px-4 md:px-8 min-h-[10rem] w-full max-w-[100rem] mx-auto">
+				<div className="flex items-stretch justify-center bg-black bg-opacity-75 py-2 px-4 md:px-8 min-h-[10rem] w-full max-w-[100rem] mx-auto">
 					<Carousel
 						responsive={responsive}
 						removeArrowOnDeviceType={["mobile"]}
 						additionalTransfrom={0}
 						arrows={false}
-						showDots
 						autoPlay
 						autoPlaySpeed={3000}
 						containerClass="container-with-dots"
 						dotListClass=""
-						draggable
-						infinite
+						draggable={true}
+						focusOnSelect={false}
+						infinite={true}
 						minimumTouchDrag={80}
 						pauseOnHover
-						renderButtonGroupOutside
-						renderDotsOutside
+						className="w-full"
 					>
 						{slidesArray.map((slide: string, index: number) => (
 							<div
 								key={index}
-								style={{ backgroundImage: `url(${slide})` }}
-								className="min-h-[10rem] max-w-[25rem] w-full bg-center bg-cover"
+								style={{
+									backgroundImage: `url(${slide})`,
+									backgroundSize: "cover",
+									backgroundPosition: "center",
+									minHeight: "10rem",
+									maxWidth: "25rem",
+									width: "100%",
+								}}
 							/>
 						))}
 					</Carousel>
