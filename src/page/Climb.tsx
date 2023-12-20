@@ -70,7 +70,7 @@ const Climb = ({ isVisible }: IIntersectionProp) => {
 						}
 					>
 						<span className="font-bold text-[7rem] text-slate">02</span>
-						<div className="flex flex-col mb-[-2rem] md:mb-[-1.8rem]">
+						<div className="flex flex-col mb-[-1.7rem] md:mb-[-1.8rem]">
 							<span className="text-[2rem] font-semibold text-cyan">CLIMB</span>
 							<div className="w-[15px] h-[15px] bg-cyan" />
 						</div>
