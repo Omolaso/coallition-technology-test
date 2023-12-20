@@ -124,6 +124,7 @@ const History = () => {
 									key={index}
 									onClick={() => goToNextSlide()}
 								>
+									<span className="hidden">{slide}</span>
 									<GoDotFill />
 								</button>
 							))}
