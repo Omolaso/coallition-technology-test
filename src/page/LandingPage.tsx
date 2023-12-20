@@ -14,16 +14,15 @@ const containerBgStyle = {
 };
 
 export interface IIntersectionProp {
-	targetElement: HTMLElement;
 	isVisible: boolean;
 }
 
 const LandingPage = () => {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
 	const targetElement = useRef<HTMLElement | null>(null);
-	const currentTargetElement = targetElement.current;
 
 	useEffect(() => {
+		const currentTargetElement = targetElement.current;
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
 				setIsVisible(entry.isIntersecting);
@@ -39,18 +38,14 @@ const LandingPage = () => {
 				observer.unobserve(currentTargetElement!);
 			}
 		};
-	}, [currentTargetElement]);
+	}, []);
 
 	return (
-		<>
-			<section
-				ref={targetElement}
-				style={containerBgStyle}
-				className="w-full font-roboto"
-			>
+		<main ref={targetElement} className="w-full">
+			<section style={containerBgStyle} className="w-full font-roboto">
 				<Navbar isVisible={isVisible} />
-				<div className="flex-1 flex item-start justify-center max-w-[100rem] mx-auto text-red-600 w-full px-4 md:px-8 min-h-[50vh]">
-					<div className="flex flex-col items-center justify-center text-center overflow-clip">
+				<div className="flex-1 flex item-start justify-center max-w-[100rem] mx-auto text-red-600 w-full px-4 md:px-8 min-h-[50vh] overflow-hidden">
+					<div className="flex flex-col items-center justify-center text-center">
 						<span
 							className={
 								isVisible
@@ -84,10 +79,10 @@ const LandingPage = () => {
 				/>
 			</section>
 
-			<History />
-			<Climb />
+			<History isVisible={isVisible} />
+			<Climb isVisible={isVisible} />
 			<Footer />
-		</>
+		</main>
 	);
 };
 

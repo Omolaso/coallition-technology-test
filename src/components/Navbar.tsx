@@ -3,12 +3,9 @@ import { RiMenu4Fill } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
 import { navLinks, INavProps } from "./NavLinks";
 import sidebarBg from "/slider-image1.jpg";
+import { IIntersectionProp } from "../page/LandingPage";
 
-interface IProps {
-	isVisible: boolean;
-}
-
-const Navbar = ({ isVisible }: IProps) => {
+const Navbar = ({ isVisible }: IIntersectionProp) => {
 	const [modal, setModal] = useState<boolean>(false);
 
 	return (
@@ -17,8 +14,8 @@ const Navbar = ({ isVisible }: IProps) => {
 				<div
 					className={
 						isVisible
-							? " opacity-100 duration-500 ease-linear flex items-center justify-center w-full max-w-[2rem]"
-							: "opacity-10 duration-500 ease-linear flex items-center justify-center w-full max-w-[2rem]"
+							? "opacity-100 duration-500 ease flex items-center justify-center w-full max-w-[2rem]"
+							: "opacity-10 duration-500 ease flex items-center justify-center w-full max-w-[2rem]"
 					}
 				>
 					<a href={navLinks[0].path} className="w-full">
@@ -36,14 +33,17 @@ const Navbar = ({ isVisible }: IProps) => {
 						{navLinks
 							.slice(1, navLinks.length)
 							.map((navLink: INavProps, index: number) => (
-								<li key={navLink.name}>
+								<li
+									key={navLink.name}
+									className={
+										isVisible
+											? "duration-500 ease w-full"
+											: " -translate-y-[150%] duration-500 ease w-full"
+									}
+								>
 									<a
 										href={navLink.path}
-										className={
-											isVisible
-												? "duration-500 ease-linear font-semibold text-base text-white italic underline hover:no-underline"
-												: " translate-y-[-100%] duration-500 ease-linear font-semibold text-base text-white italic underline hover:no-underline"
-										}
+										className="font-semibold text-base text-white italic underline hover:no-underline"
 									>
 										{(index + 1).toString().padStart(2, "0")}. {navLink.name}
 									</a>

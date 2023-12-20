@@ -1,4 +1,3 @@
-
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import sliderImage1 from "/slider-image1.jpg";
@@ -6,6 +5,7 @@ import sliderImage2 from "/slider-image2.jpg";
 import logo2 from "/logo2.png";
 import logo from "/logo.jpg";
 import { navLinks, INavProps } from "../components/NavLinks";
+import { IIntersectionProp } from "./LandingPage";
 
 const containerStyle = {
 	backgroundImage: `url(${logo})`,
@@ -48,10 +48,9 @@ const slidesArray: string[] = [
 	`${sliderImage2}`,
 ];
 
-const History = () => {
-	
+const History = ({ isVisible }: IIntersectionProp) => {
 	return (
-		<section id="history" className="w-full">
+		<section id="history" className={isVisible ? "duration-500 ease-linear w-full" : "translate-y-[-100%] duration-500 ease-linear w-full"}>
 			<nav className="hidden lg:flex min-h-[5rem] bg-white text-slate w-full py-2 px-4 md:px-8">
 				<div className="hidden md:flex flex-row items-center justify-between w-full max-w-[100rem]">
 					<div className="flex items-center justify-center w-full">
@@ -119,7 +118,7 @@ const History = () => {
 						additionalTransfrom={0}
 						arrows={false}
 						autoPlay
-						autoPlaySpeed={3000}
+						autoPlaySpeed={2000}
 						containerClass="container-with-dots"
 						dotListClass=""
 						draggable={true}
